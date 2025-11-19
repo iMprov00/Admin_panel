@@ -1,0 +1,36 @@
+127.0.0.1 - - [19/Nov/2025:11:49:39 +0700] "GET /patients HTTP/1.1" 200 21410 0.1590
+127.0.0.1 - - [19/Nov/2025:11:49:39 +0700] "GET /js/app.js HTTP/1.1" 500 181161 0.0591
+s\TriageV2
+========================================
+Текущая директория: C:\Projects\TriageV2
+========================================
+*** SIGUSR2 not implemented, signal based restart unavailable!
+*** SIGUSR1 not implemented, signal based restart unavailable!
+*** SIGHUP not implemented, signal based logs reopening unavailable!
+Puma starting in single mode...
+* Puma version: 6.6.1 ("Return to Forever")
+* Ruby version: ruby 3.3.7 (2025-01-15 revision be31f993d7) [x64-mingw-ucrt]
+*  Min threads: 0
+*  Max threads: 5
+*  Environment: development
+*          PID: 14860
+* Listening on http://0.0.0.0:4569
+Use Ctrl-C to stop
+D, [2025-11-19T11:49:39.574014 #14860] DEBUG -- :   [1m[36mPatient Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "patients" LIMIT ?[0m  [["LIMIT", 1]]
+D, [2025-11-19T11:49:39.574401 #14860] DEBUG -- :   [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT "patients".* FROM "patients"[0m
+D, [2025-11-19T11:49:39.601317 #14860] DEBUG -- :   [1m[36mAssessment Load (0.2ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.621438 #14860] DEBUG -- :   [1m[36mAssessment Load (0.2ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.622104 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.622655 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.623086 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.623709 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 17], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.624021 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 17], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.624501 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.624948 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.625364 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.625769 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:49:39.626195 #14860] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2025-11-19 11:50:28 +0700 ===
+- Goodbye!
+Terminate batch job (Y/N)? 

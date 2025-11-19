@@ -171,26 +171,41 @@ class ProcessManager
       false
     end
   end
-
-  def self.get_service_logs(service, lines = 100)
-    begin
-      log_files = Dir["logs/#{service.name}_*.log"].sort
-      return "Логи не найдены" if log_files.empty?
+def self.get_service_logs(service, lines = 100)
+  begin
+    log_files = Dir["logs/#{service.name}_*.log"].sort
+    return "Логи не найдены" if log_files.empty?
+    
+    latest_log = log_files.last
+    if File.exist?(latest_log)
+      # Пробуем разные кодировки
+      content = nil
+      encodings = ['UTF-8', 'Windows-1251', 'CP866']
       
-      latest_log = log_files.last
-      if File.exist?(latest_log)
-        # Читаем с правильной кодировкой
-        content = File.readlines(latest_log, encoding: 'UTF-8')
-        start_index = [0, content.length - lines].max
-        logs = content[start_index..-1] || content
-        return logs.join
-      else
-        return "Файл логов не найден: #{latest_log}"
+      encodings.each do |encoding|
+        begin
+          content = File.readlines(latest_log, encoding: encoding)
+          break
+        rescue ArgumentError
+          next
+        end
       end
-    rescue => e
-      return "Ошибка чтения логов: #{e.message}"
+      
+      # Если не удалось прочитать с правильной кодировкой, используем бинарный режим
+      unless content
+        content = File.binread(latest_log).force_encoding('UTF-8').split("\n")
+      end
+      
+      start_index = [0, content.length - lines].max
+      logs = content[start_index..-1] || content
+      return logs.join("\n")
+    else
+      return "Файл логов не найден: #{latest_log}"
     end
+  rescue => e
+    return "Ошибка чтения логов: #{e.message}"
   end
+end
 
   def self.update_all_statuses
     AppService.where(status: 'running').each do |service|

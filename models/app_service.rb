@@ -36,7 +36,12 @@ class AppService < ActiveRecord::Base
     BAT
     
     FileUtils.mkdir_p('projects')
-    File.write(File.join('projects', bat_filename), bat_content)
+    
+    # Сохраняем в UTF-8 с BOM для Windows
+    File.open(File.join('projects', bat_filename), 'w:UTF-8') do |f|
+      f.write("\uFEFF") # BOM
+      f.write(bat_content)
+    end
     
     puts "Создан BAT файл: #{bat_filename}"
     puts "Путь к проекту: #{project_path}"

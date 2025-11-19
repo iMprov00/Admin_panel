@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-bug"></i> Отладочная информация
+        </h2>
+        <p class="text-muted mb-0">Системная информация и диагностика</p>
+    </div>
+    <form action="/debug/update_statuses" method="post" class="d-inline">
+        <button type="submit" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-clockwise"></i> Обновить статусы
+        </button>
+    </form>
+</div>
+
+<div class="row">
+    <!-- Системная информация -->
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Системная информация</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr>
+                                <td><strong>Текущая директория:</strong></td>
+                                <td><code><%= @debug_info[:current_directory] %></code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Версия Ruby:</strong></td>
+                                <td><%= @debug_info[:ruby_version] %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Платформа:</strong></td>
+                                <td><%= @debug_info[:platform] %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Окружение:</strong></td>
+                                <td><%= @debug_info[:environment] %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Всего служб:</strong></td>
+                                <td><span class="badge bg-primary"><%= @debug_info[:services_count] %></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Запущено служб:</strong></td>
+                                <td><span class="badge bg-success"><%= @debug_info[:running_services] %></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Быстрые действия -->
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Быстрые действия</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="/services/new" class="btn btn-outline-primary">
+                        <i class="bi bi-plus-circle"></i> Добавить службу
+                    </a>
+                    <a href="/" class="btn btn-outline-secondary">
+                        <i class="bi bi-house"></i> На главную
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Последние логи -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">Последние логи сервисов</h5>
+    </div>
+    <div class="card-body">
+        <% if @recent_logs.empty? %>
+            <div class="text-center text-muted py-3">
+                <i class="bi bi-inbox display-4"></i>
+                <p class="mt-2">Нет записей в логах</p>
+            </div>
+        <% else %>
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th>Время</th>
+                            <th>Сервис</th>
+                            <th>Тип</th>
+                            <th>Сообщение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @recent_logs.each do |log| %>
+                            <tr>
+                                <td><small><%= log.created_at.localtime.strftime('%H:%M:%S') %></small></td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        <%= log.app_service&.name || 'N/A' %>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge <%= log.log_type == 'error' ? 'bg-danger' : (log.log_type == 'warning' ? 'bg-warning' : 'bg-success') %>">
+                                        <%= log.log_type %>
+                                    </span>
+                                </td>
+                                <td><small><%= log.output %></small></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        <% end %>
+    </div>
+</div>
