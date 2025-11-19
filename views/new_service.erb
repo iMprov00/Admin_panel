@@ -1,0 +1,48 @@
+<div class="form-container">
+    <h2>➕ Добавить новую службу</h2>
+    
+    <% if @errors %>
+        <div class="flash error">
+            <% @errors.each do |error| %>
+                <p><%= error %></p>
+            <% end %>
+        </div>
+    <% end %>
+    
+    <form method="post" action="/services">
+        <div class="form-group">
+            <label for="name">Название службы:</label>
+            <input type="text" id="name" name="name" required placeholder="Например: Мой веб-сервер">
+        </div>
+        
+        <div class="form-group">
+            <label for="project_path">Путь к проекту:</label>
+            <input type="text" id="project_path" name="project_path" required 
+                   placeholder="C:\Projects\MyApp" value="<%= params[:project_path] %>">
+            <small>Полный путь к папке с проектом</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="command">Команда запуска:</label>
+            <input type="text" id="command" name="command" required 
+                   placeholder="ruby app.rb -o 0.0.0.0 -p 3000">
+            <small>Команда которая выполнится в папке проекта</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Описание (необязательно):</label>
+            <input type="text" id="description" name="description" 
+                   placeholder="Краткое описание службы">
+        </div>
+        
+        <div class="form-group">
+            <label for="port">Порт (необязательно):</label>
+            <input type="number" id="port" name="port" placeholder="3000">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-start">Создать службу</button>
+            <a href="/" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,91 @@
+<div class="services-header">
+    <h2>Мои службы</h2>
+    <p>Управление всеми запущенными службами</p>
+</div>
+
+<% if @services.empty? %>
+    <div class="empty-state">
+        <h3>🚫 Нет добавленных служб</h3>
+        <p>Добавьте первую службу чтобы начать работу</p>
+        <a href="/services/new" class="btn btn-secondary">Добавить службу</a>
+    </div>
+<% else %>
+    <div class="services-grid">
+        <% @services.each do |service| %>
+            <div class="service-card <%= service.status %>">
+                <div class="service-header">
+                    <div class="service-name">📦 <%= service.name %></div>
+                    <div class="service-status <%= "status-#{service.status}" %>">
+                        <%= service.status == 'running' ? '🟢 Запущена' : '🔴 Остановлена' %>
+                    </div>
+                </div>
+                
+                <div class="service-info">
+                    <% if service.description.present? %>
+                        <div class="info-row">
+                            <span class="info-label">Описание:</span>
+                            <span><%= service.description %></span>
+                        </div>
+                    <% end %>
+                    
+                    <div class="info-row">
+                        <span class="info-label">Команда:</span>
+                        <span class="command"><%= service.command %></span>
+                    </div>
+                    
+                    <% if service.port.present? %>
+                        <div class="info-row">
+                            <span class="info-label">Порт:</span>
+                            <span><%= service.port %></span>
+                        </div>
+                    <% end %>
+                    
+                    <% if service.pid %>
+                        <div class="info-row">
+                            <span class="info-label">PID:</span>
+                            <span><%= service.pid %></span>
+                        </div>
+                    <% end %>
+                    
+                    <% if service.last_started %>
+                        <div class="info-row">
+                            <span class="info-label">Запущена:</span>
+                            <span><%= service.last_started.localtime.strftime('%d.%m.%Y %H:%M') %></span>
+                        </div>
+                    <% end %>
+                    
+                    <% if service.bat_filename %>
+                        <div class="info-row">
+                            <span class="info-label">BAT файл:</span>
+                            <span><%= service.bat_filename %></span>
+                        </div>
+                    <% end %>
+                </div>
+                
+                <div class="actions">
+                    <% if service.status == 'stopped' %>
+                        <form action="/services/<%= service.id %>/start" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-start">▶️ Запустить</button>
+                        </form>
+                    <% else %>
+                        <form action="/services/<%= service.id %>/stop" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-stop">⏹️ Остановить</button>
+                        </form>
+                    <% end %>
+                    
+                    <a href="/services/<%= service.id %>/logs" class="btn btn-log">📋 Логи</a>
+                    <a href="/services/<%= service.id %>/edit" class="btn btn-edit">✏️ Редактировать</a>
+                    <form action="/services/<%= service.id %>/delete" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-delete">🗑️ Удалить</button>
+                    </form>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    
+    <div class="stats">
+        <p>Всего служб: <strong><%= @services.count %></strong> | 
+           Запущено: <strong><%= @services.where(status: 'running').count %></strong> | 
+           Остановлено: <strong><%= @services.where(status: 'stopped').count %></strong></p>
+    </div>
+<% end %>

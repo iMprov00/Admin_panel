@@ -1,0 +1,14 @@
+<div class="logs-header">
+    <h2>📋 Логи службы: <%= @service.name %></h2>
+    <p>Последние 100 строк логов</p>
+</div>
+
+<div class="logs-container">
+    <div class="logs-actions">
+        <a href="/" class="btn btn-secondary">← Назад к списку</a>
+    </div>
+    
+    <div class="logs-content">
+        <%= @logs %>
+    </div>
+</div>

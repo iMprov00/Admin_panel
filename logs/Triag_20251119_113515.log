@@ -1,0 +1,33 @@
+127.0.0.1 - - [19/Nov/2025:11:35:21 +0700] "GET / HTTP/1.1" 200 6844 0.0405
+127.0.0.1 - - [19/Nov/2025:11:35:21 +0700] "GET /css/style.css HTTP/1.1" 200 10971 0.0022
+127.0.0.1 - - [19/Nov/2025:11:35:21 +0700] "GET /images/logo.png HTTP/1.1" 200 6154 0.0019
+127.0.0.1 - - [19/Nov/2025:11:35:21 +0700] "GET /js/app.js HTTP/1.1" 500 181154 0.0451
+127.0.0.1 - - [19/Nov/2025:11:35:25 +0700] "GET /patients HTTP/1.1" 200 21410 0.1397
+127.0.0.1 - - [19/Nov/2025:11:35:25 +0700] "GET /js/app.js HTTP/1.1" 500 181161 0.0174
+127.0.0.1 - - [19/Nov/2025:11:35:26 +0700] "GET /beds HTTP/1.1" 200 1055 0.0026
+127.0.0.1 - - [19/Nov/2025:11:35:26 +0700] "GET /css/monitor.css HTTP/1.1" 200 9784 0.0021
+127.0.0.1 - - [19/Nov/2025:11:35:26 +0700] "GET /js/monitor.js HTTP/1.1" 200 5251 0.0017
+127.0.0.1 - - [19/Nov/2025:11:35:26 +0700] "GET /beds/data HTTP/1.1" 200 382 0.0239
+127.0.0.1 - - [19/Nov/2025:11:35:31 +0700] "GET /beds HTTP/1.1" 200 1055 0.0022
+127.0.0.1 - - [19/Nov/2025:11:35:31 +0700] "GET /beds/data HTTP/1.1" 200 382 0.0041
+  [1m[36mPatient Load (0.1ms)[0m  [1m[34mSELECT "patients".* FROM "patients"[0m
+D, [2025-11-19T11:35:25.076459 #7428] DEBUG -- :   [1m[36mAssessment Load (0.4ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.109075 #7428] DEBUG -- :   [1m[36mAssessment Load (1.6ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.109742 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.111419 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.111829 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 16], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.115053 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 17], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.115404 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 17], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.117186 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.119067 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.120368 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.120756 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:35:25.121620 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ? ORDER BY "assessments"."created_at" DESC LIMIT ?[0m  [["patient_id", 18], ["LIMIT", 1]]
+D, [2025-11-19T11:35:26.372799 #7428] DEBUG -- :   [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."on_monitor" = ?[0m  [["on_monitor", 1]]
+D, [2025-11-19T11:35:26.390823 #7428] DEBUG -- :   [1m[36mAssessment Load (0.2ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ?[0m  [["patient_id", 18]]
+D, [2025-11-19T11:35:31.199103 #7428] DEBUG -- :   [1m[36mPatient Load (0.2ms)[0m  [1m[34mSELECT "patients".* FROM "patients" WHERE "patients"."on_monitor" = ?[0m  [["on_monitor", 1]]
+D, [2025-11-19T11:35:31.200230 #7428] DEBUG -- :   [1m[36mAssessment Load (0.1ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."patient_id" = ?[0m  [["patient_id", 18]]
+- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2025-11-19 11:36:03 +0700 ===
+- Goodbye!
+Terminate batch job (Y/N)? Terminate batch job (Y/N)? 
